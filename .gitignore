@@ -23,5 +23,4 @@ dist-ssr
 *.sln
 *.sw?
 
-# Large image files (add manually or use Git LFS)
-public/images/*.png
+# Large image files are tracked with Git LFS
