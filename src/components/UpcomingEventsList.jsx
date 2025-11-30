@@ -45,23 +45,23 @@ export const UpcomingEventsList = ({ events, onToggleEvent, onDeleteEvent }) => 
                 flexWrap: 'wrap'
               }}
             >
-              <div className="event-info" style={{ flex: '1 1 300px', minWidth: '200px' }}>
-                <div style={{ display: 'flex', alignItems: 'center', gap: '8px', flexWrap: 'wrap' }}>
-                  <h4 style={{ margin: 0, fontSize: '0.95rem' }}>
+              <div className="event-info" style={{ flex: '1 1 auto', minWidth: '180px', display: 'flex', alignItems: 'center', gap: '12px' }}>
+                <div>
+                  <h4 style={{ margin: 0, fontSize: '0.875rem', fontWeight: '500', display: 'inline' }}>
                     {event.name}
-                    {isNext && <span style={{ color: '#8b5cf6', marginLeft: '8px', fontSize: '0.85rem' }}>← Sıradaki</span>}
                   </h4>
+                  {isNext && <span style={{ color: '#8b5cf6', marginLeft: '6px', fontSize: '0.75rem', fontWeight: '600' }}>← Sıradaki</span>}
+                  <div style={{ fontSize: '0.75rem', color: '#9ca3af', marginTop: '2px' }}>
+                    {event.category && <span style={{ color: '#8b5cf6' }}>[{event.category}]</span>}
+                    {' '}
+                    {nextOccurrence && formatTime(nextOccurrence.time)}
+                    {nextOccurrence?.endTimeStr && ` - ${nextOccurrence.endTimeStr}`}
+                  </div>
                 </div>
-                <p className="info-text" style={{ margin: '4px 0 0 0', fontSize: '0.85rem' }}>
-                  {event.category && <span style={{ color: '#8b5cf6' }}>[{event.category}]</span>}
-                  {' '}
-                  {nextOccurrence && formatTime(nextOccurrence.time)}
-                  {nextOccurrence?.endTimeStr && ` - ${nextOccurrence.endTimeStr}`}
-                </p>
               </div>
 
               {timeUntil > 0 && (
-                <div className="event-countdown" style={{ fontSize: '1rem', minWidth: '80px', textAlign: 'right' }}>
+                <div className="event-countdown" style={{ fontSize: '0.875rem', minWidth: '70px', textAlign: 'right', fontWeight: '600', color: '#f59e0b' }}>
                   {formatDuration(timeUntil)}
                 </div>
               )}

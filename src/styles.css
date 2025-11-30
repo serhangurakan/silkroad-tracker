@@ -301,21 +301,31 @@ body {
 .event-list {
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: 6px;
 }
 
 .event-item {
   background: #1a1a2e;
-  padding: 15px;
-  border-radius: 8px;
+  padding: 8px 12px;
+  border-radius: 6px;
   border: 1px solid #2a2a3e;
   display: flex;
   justify-content: space-between;
   align-items: center;
+  transition: all 0.2s;
+  cursor: pointer;
+  min-height: 48px;
+}
+
+.event-item:hover {
+  background: #222239;
+  border-color: #3a3a4e;
 }
 
 .event-item.active {
   border-color: #10b981;
+  border-width: 2px;
+  background: rgba(16, 185, 129, 0.05);
 }
 
 .event-item.upcoming {
@@ -348,8 +358,8 @@ body {
 
 .toggle-switch {
   position: relative;
-  width: 50px;
-  height: 26px;
+  width: 40px;
+  height: 22px;
 }
 
 .toggle-switch input {
@@ -366,19 +376,19 @@ body {
   right: 0;
   bottom: 0;
   background-color: #2a2a3e;
-  transition: 0.4s;
+  transition: 0.3s;
   border-radius: 34px;
 }
 
 .slider:before {
   position: absolute;
   content: "";
-  height: 18px;
-  width: 18px;
-  left: 4px;
-  bottom: 4px;
+  height: 16px;
+  width: 16px;
+  left: 3px;
+  bottom: 3px;
   background-color: white;
-  transition: 0.4s;
+  transition: 0.3s;
   border-radius: 50%;
 }
 
@@ -387,7 +397,7 @@ input:checked + .slider {
 }
 
 input:checked + .slider:before {
-  transform: translateX(24px);
+  transform: translateX(18px);
 }
 
 .alarm-modal {
