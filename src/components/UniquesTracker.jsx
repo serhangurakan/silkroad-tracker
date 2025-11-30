@@ -54,8 +54,6 @@ export const UniquesTracker = ({ events }) => {
         ))}
       </div>
 
-      <LogParserPanel onParsedData={handleParsedData} />
-
       <div className="card">
         <h2>Flame Uniques - 4 Saat Sabit Spawn</h2>
         {flameUniques.map(unique => (
@@ -76,6 +74,8 @@ export const UniquesTracker = ({ events }) => {
       <TitanUniqueSection uniques={titanUniques} titanEvent={titanEvent} />
 
       <ElementUniqueGrid uniques={elementUniques} />
+
+      <LogParserPanel onParsedData={handleParsedData} />
     </div>
   );
 };

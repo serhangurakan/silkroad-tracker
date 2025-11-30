@@ -40,15 +40,19 @@ export const UpcomingEventsList = ({ events, onToggleEvent, onDeleteEvent }) => 
               style={{
                 borderColor: isNext ? '#8b5cf6' : undefined,
                 borderWidth: isNext ? '2px' : undefined,
-                marginBottom: '5px'
+                marginBottom: '5px',
+                padding: '10px 14px',
+                flexWrap: 'wrap'
               }}
             >
-              <div className="event-info">
-                <h4>
-                  {event.name}
-                  {isNext && <span style={{ color: '#8b5cf6', marginLeft: '10px' }}>← Sıradaki</span>}
-                </h4>
-                <p className="info-text">
+              <div className="event-info" style={{ flex: '1 1 300px', minWidth: '200px' }}>
+                <div style={{ display: 'flex', alignItems: 'center', gap: '8px', flexWrap: 'wrap' }}>
+                  <h4 style={{ margin: 0, fontSize: '0.95rem' }}>
+                    {event.name}
+                    {isNext && <span style={{ color: '#8b5cf6', marginLeft: '8px', fontSize: '0.85rem' }}>← Sıradaki</span>}
+                  </h4>
+                </div>
+                <p className="info-text" style={{ margin: '4px 0 0 0', fontSize: '0.85rem' }}>
                   {event.category && <span style={{ color: '#8b5cf6' }}>[{event.category}]</span>}
                   {' '}
                   {nextOccurrence && formatTime(nextOccurrence.time)}
@@ -57,22 +61,22 @@ export const UpcomingEventsList = ({ events, onToggleEvent, onDeleteEvent }) => 
               </div>
 
               {timeUntil > 0 && (
-                <div className="event-countdown">
+                <div className="event-countdown" style={{ fontSize: '1rem', minWidth: '80px', textAlign: 'right' }}>
                   {formatDuration(timeUntil)}
                 </div>
               )}
 
-              <div style={{ display: 'flex', gap: '10px', alignItems: 'center' }}>
+              <div style={{ display: 'flex', gap: '8px', alignItems: 'center' }}>
                 {event.isCustom && (
                   <button
                     className="button danger"
-                    onClick={() => onDeleteEvent(event.id)}
-                    style={{ padding: '5px 15px', fontSize: '0.85rem' }}
+                    onClick={(e) => { e.stopPropagation(); onDeleteEvent(event.id); }}
+                    style={{ padding: '4px 12px', fontSize: '0.8rem' }}
                   >
                     Sil
                   </button>
                 )}
-                <label className="toggle-switch">
+                <label className="toggle-switch" onClick={(e) => e.stopPropagation()}>
                   <input
                     type="checkbox"
                     checked={event.enabled}
