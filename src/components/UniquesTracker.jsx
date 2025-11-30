@@ -1,4 +1,5 @@
 import { GardenUniqueCard } from './GardenUniqueCard';
+import { FlameUniqueCard } from './FlameUniqueCard';
 import { LogParserPanel } from './LogParserPanel';
 import { NormalUniqueGrid } from './NormalUniqueGrid';
 import { TitanUniqueSection } from './TitanUniqueSection';
@@ -8,8 +9,10 @@ import { usePersistentState } from '../hooks/usePersistentState';
 
 export const UniquesTracker = ({ events }) => {
   const [gardenKillTimes, setGardenKillTimes] = usePersistentState('gardenKillTimes', {});
+  const [flameKillTimes, setFlameKillTimes] = usePersistentState('flameKillTimes', {});
 
   const gardenUniques = getUniquesByGroup(uniqueGroups.GARDEN);
+  const flameUniques = getUniquesByGroup(uniqueGroups.FLAME);
   const normalUniques = getUniquesByGroup(uniqueGroups.NORMAL);
   const titanUniques = getUniquesByGroup(uniqueGroups.TITAN);
   const elementUniques = getUniquesByGroup(uniqueGroups.ELEMENT);
@@ -18,6 +21,13 @@ export const UniquesTracker = ({ events }) => {
 
   const handleUpdateKillTime = (uniqueId, killTime) => {
     setGardenKillTimes(prev => ({
+      ...prev,
+      [uniqueId]: killTime
+    }));
+  };
+
+  const handleUpdateFlameKillTime = (uniqueId, killTime) => {
+    setFlameKillTimes(prev => ({
       ...prev,
       [uniqueId]: killTime
     }));
@@ -45,6 +55,18 @@ export const UniquesTracker = ({ events }) => {
       </div>
 
       <LogParserPanel onParsedData={handleParsedData} />
+
+      <div className="card">
+        <h2>Flame Uniques - 4 Saat Sabit Spawn</h2>
+        {flameUniques.map(unique => (
+          <FlameUniqueCard
+            key={unique.id}
+            unique={unique}
+            lastKillTime={flameKillTimes[unique.id]}
+            onUpdateKillTime={handleUpdateFlameKillTime}
+          />
+        ))}
+      </div>
 
       <div className="card">
         <h2>Normal Uniques - Spawn Points</h2>

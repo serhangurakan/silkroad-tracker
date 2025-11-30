@@ -1,5 +1,6 @@
 export const uniqueGroups = {
   GARDEN: 'Garden Uniques',
+  FLAME: 'Flame Uniques',
   NORMAL: 'Normal Uniques',
   TITAN: 'Titan Uniques',
   ELEMENT: 'Element Uniques'
@@ -10,6 +11,9 @@ export const uniques = [
   { id: 'kidemonas', displayName: 'Kidemonas', group: uniqueGroups.GARDEN },
   { id: 'thief_boss_kalia', displayName: 'Thief Boss Kalia', group: uniqueGroups.GARDEN },
   { id: 'ultimate_lautatune', displayName: 'Ultimate Lautatune', group: uniqueGroups.GARDEN },
+
+  // Flame Uniques
+  { id: 'hells_int', displayName: "Hell's INT", group: uniqueGroups.FLAME },
 
   // Normal Uniques
   { id: 'tiger_girl', displayName: 'Tiger Girl', group: uniqueGroups.NORMAL },
@@ -55,6 +59,9 @@ export const spawnImages = {
   'isyutaru_titan': '/images/Isyutaru (Titan).png',
   'lord_yarkan_titan': '/images/Lord Yarkan (Titan).png',
   'demon_shaitan_titan': '/images/Demon Shaitan (Titan).png',
+
+  // Flame Uniques
+  'hells_int': "/images/Hell's Guardian.png",
 
   // Element Uniques
   'legion_water_spirit': '/images/Legion Water (Fire) Spawn Points.png',
